@@ -3,6 +3,13 @@ package com.andre.challenge.dto;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.andre.challenge.entities.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -11,11 +18,16 @@ public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	@NotEmpty(message = "cant't be empty")
+	@Length(min = 5, max = 80)
 	private String nome;
+	@Email
 	private String email;
+	@CPF
 	private String cpf;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
+	@NotNull
+	@JsonFormat(shape = JsonFormat.Shape.STRING, 
+	pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
 	private Date data_nascimento;
 	
 	public UserDTO() {
