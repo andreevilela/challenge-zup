@@ -3,6 +3,7 @@ package com.andre.challenge.entities;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,9 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	@Column(unique = true)
 	private String email;
+	@Column(unique = true)
 	private String cpf;
 	private Date data_nascimento;
 	

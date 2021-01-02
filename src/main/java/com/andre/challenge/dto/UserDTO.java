@@ -11,8 +11,10 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.andre.challenge.entities.User;
+import com.andre.challenge.services.validation.UserInsertValid;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+@UserInsertValid
 public class UserDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
